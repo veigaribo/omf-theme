@@ -2,9 +2,9 @@ function fish_prompt
   set -l code $status
 
   set -l prompt (prompt_pwd)
-  set -l base (basename (prompt_pwd))
+  set -l base (basename "$prompt")
 
-  printf (echo $prompt \
+  printf (echo "$prompt" \
     | sed "s|~|"(fst)"^^"(off)"|g" \
     | sed "s|/|"(snd)"/"(off)"|g" \
     | sed "s|"$base"|"(fst)$base(off)" |g")(off)
