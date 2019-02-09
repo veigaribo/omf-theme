@@ -1,3 +1,3 @@
 function fish_greeting
-  echo (set_color 666)(uname -mnprs)(set_color normal)
+  echo (batman_color_dim)(uname -mnprs)(batman_color_off)
 end

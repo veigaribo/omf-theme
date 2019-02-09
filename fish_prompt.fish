@@ -1,9 +1,3 @@
-function fst; set_color -o fa0; end
-function snd; set_color -o 36f; end
-function trd; set_color -o f06; end
-function dim; set_color    666; end
-function off; set_color normal; end
-
 function fish_prompt
   test $status -ne 0;
     and set -l colors 600 900 c00
@@ -12,11 +6,11 @@ function fish_prompt
   set -l pwd (prompt_pwd)
   set -l base (basename "$pwd")
 
-  set -l expr "s|~|"(fst)"^^"(off)"|g; \
-               s|/|"(snd)"/"(off)"|g;  \
-               s|"$base"|"(fst)$base(off)" |g"
+  set -l expr "s|~|"(batman_color_fst)"^^"(batman_color_off)"|g; \
+               s|/|"(batman_color_snd)"/"(batman_color_off)"|g;  \
+               s|"$base"|"(batman_color_fst)$base(batman_color_off)" |g"
 
-  echo -n (echo "$pwd" | sed -e $expr)(off)
+  echo -n (echo "$pwd" | sed -e $expr)(batman_color_off)
 
   for color in $colors
     echo -n (set_color $color)">"
