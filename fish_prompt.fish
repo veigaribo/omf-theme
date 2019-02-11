@@ -6,11 +6,11 @@ function fish_prompt
   set -l pwd (prompt_pwd)
   set -l base (basename "$pwd")
 
-  set -l expr "s|~|"(fst)"^^"(off)"|g; \
-               s|/|"(snd)"/"(off)"|g;  \
-               s|"$base"|"(fst)$base(off)" |g"
+  set -l expr "s|~|"(__batman_color_fst)"^^"(__batman_color_off)"|g; \
+               s|/|"(__batman_color_snd)"/"(__batman_color_off)"|g;  \
+               s|"$base"|"(__batman_color_fst)$base(__batman_color_off)" |g"
 
-  echo -n (echo "$pwd" | sed -e $expr)(off)
+  echo -n (echo "$pwd" | sed -e $expr)(__batman_color_off)
 
   for color in $colors
     echo -n (set_color $color)">"
