@@ -17,7 +17,7 @@ end
 
 function fish_right_prompt
   set -l code $status
-  test $code -ne 0; and echo (__color_dim)"("(__color_trd)"$code"(__color_dim)") "(__color_off)
+  test $code -ne 0; and echo (__color_dim)"("(__color_snd)"$code"(__color_dim)") "(__color_off)
 
   if test -n "$SSH_CONNECTION"
      printf (__color_trd)":"(__color_dim)"$HOSTNAME "(__color_off)
