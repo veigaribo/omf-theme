@@ -7,7 +7,8 @@ function git::get_ahead_count
 end
 
 function git::branch_name
-  command git symbolic-ref --short HEAD
+  command git symbolic-ref --short HEAD 2> /dev/null 2> /dev/null || \
+          echo (__color_dim)"detached"(__color_off)
 end
 
 function git::is_touched
