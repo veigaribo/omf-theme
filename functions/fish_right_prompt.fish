@@ -16,28 +16,28 @@ end
 
 function fish_right_prompt
   set -l code $status
-  test $code -ne 0; and echo (__batman_color_dim)"("(__batman_color_trd)"$code"(__batman_color_dim)") "(__batman_color_off)
+  test $code -ne 0; and echo (__color_dim)"("(__color_trd)"$code"(__color_dim)") "(__color_off)
 
   if test -n "$SSH_CONNECTION"
-     printf (__batman_color_trd)":"(__batman_color_dim)"$HOSTNAME "(__batman_color_off)
+     printf (__color_trd)":"(__color_dim)"$HOSTNAME "(__color_off)
    end
 
   if git rev-parse 2> /dev/null
-    git::is_stashed; and echo (__batman_color_trd)"^"(__batman_color_off)
-    printf (__batman_color_snd)"("(begin
+    git::is_stashed; and echo (__color_trd)"^"(__color_off)
+    printf (__color_snd)"("(begin
       if git::is_touched
-        echo (__batman_color_trd)"*"(__batman_color_off)
+        echo (__color_trd)"*"(__color_off)
       else
         echo ""
       end
-    end)(__batman_color_fst)(git::branch_name)(__batman_color_snd)(begin
+    end)(__color_fst)(git::branch_name)(__color_snd)(begin
       set -l count (git::get_ahead_count)
         if test $count -eq 0
           echo ""
         else
-          echo (__batman_color_trd)"+"(__batman_color_fst)$count
+          echo (__color_trd)"+"(__color_fst)$count
         end
-    end)(__batman_color_snd)") "(__batman_color_off)
+    end)(__color_snd)") "(__color_off)
   end
-  printf (__batman_color_dim)(date +%H(__batman_color_fst):(__batman_color_dim)%M(__batman_color_fst):(__batman_color_dim)%S)(__batman_color_off)" "
+  printf (__color_dim)(date +%H(__color_fst):(__color_dim)%M(__color_fst):(__color_dim)%S)(__color_off)" "
 end
